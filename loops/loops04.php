@@ -14,9 +14,6 @@ class FizzBuzz {
                 echo "$i ";
             }
             $count++;
-            if ($count % 20 == 0) {
-                echo "\n";
-            }
         }
     }
 }
