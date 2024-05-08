@@ -7,7 +7,6 @@ class TicTacToe
 
     public function __construct()
     {
-        // Инициализируем игровое поле и начального игрока
         $this->board = [
             [' ', ' ', ' '],
             [' ', ' ', ' '],
@@ -18,7 +17,6 @@ class TicTacToe
 
     public function displayBoard()
     {
-        // Вывод игрового поля на экран
         echo "  0 1 2\n";
         for ($i = 0; $i < 3; $i++) {
             echo "$i ";
@@ -31,7 +29,6 @@ class TicTacToe
 
     public function makeMove($row, $col)
     {
-        // Проверка на корректность хода и установка фигуры игрока
         if ($row >= 0 && $row < 3 && $col >= 0 && $col < 3 && $this->board[$row][$col] == ' ') {
             $this->board[$row][$col] = $this->currentPlayer;
             return true;
@@ -41,13 +38,11 @@ class TicTacToe
 
     public function switchPlayer()
     {
-        // Переключение игрока после каждого хода
         $this->currentPlayer = ($this->currentPlayer == 'X') ? 'O' : 'X';
     }
 
     public function checkWinner()
     {
-        // Проверка на победителя по строкам и столбцам
         for ($i = 0; $i < 3; $i++) {
             if ($this->board[$i][0] != ' ' && $this->board[$i][0] == $this->board[$i][1] && $this->board[$i][1] == $this->board[$i][2]) {
                 return $this->board[$i][0];
@@ -57,7 +52,6 @@ class TicTacToe
             }
         }
 
-        // Проверка на победителя по диагоналям
         if ($this->board[0][0] != ' ' && $this->board[0][0] == $this->board[1][1] && $this->board[1][1] == $this->board[2][2]) {
             return $this->board[0][0];
         }
@@ -70,7 +64,6 @@ class TicTacToe
 
     public function checkTie()
     {
-        // Проверка на ничью
         foreach ($this->board as $row) {
             foreach ($row as $cell) {
                 if ($cell == ' ') {
@@ -83,7 +76,6 @@ class TicTacToe
 
     public function play()
     {
-        // Основной игровой цикл
         while (true) {
             $this->displayBoard();
 
